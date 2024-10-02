@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcoAlert Results</title>
+</head>
+<body>
+    <h1>Detected Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.type }} detected at {{ event.time }} seconds</li>
+            <p>Voice-over: {{ event.voice_over }}</p>
+        {% endfor %}
+    </ul>
+
+    <h2>Summary Report</h2>
+    <textarea rows="10" cols="50">{{ report }}</textarea>
+    <form action="/download_report" method="post">
+        <input type="hidden" name="report" value="{{ report }}">
+        <input type="submit" value="Download Report">
+    </form>
+</body>
+</html>
+
